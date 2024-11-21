@@ -40,3 +40,26 @@ model OrderDetail {
   quantity  Int
   price     Float
 }
+
+model User {
+  id     Int     @id @default(autoincrement())
+  name   String
+  email  String  @unique
+  wallet Wallet?
+}
+
+model Wallet {
+  id      Int   @id @default(autoincrement())
+  userId  Int   @unique
+  user    User  @relation(fields: [userId], references: [id])
+  balance Float @default(0.0)
+}
+
+model TransactionLog {
+  id         Int      @id @default(autoincrement())
+  senderId   Int
+  receiverId Int
+  amount     Float
+  createdAt  DateTime @default(now())
+  status     String
+}

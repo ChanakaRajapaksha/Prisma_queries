@@ -1,13 +1,13 @@
 const express = require('express');
 
 const orderRoutes = require('./routes/orderRoute');
-// const walletRoutes = require('./routes/walletRoutes');
+const walletRoutes = require('./routes/walletRoute');
 
 const app = express();
 app.use(express.json());
 
 app.use('/orders', orderRoutes);
-// app.use('/wallets', walletRoutes);
+app.use('/wallets', walletRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

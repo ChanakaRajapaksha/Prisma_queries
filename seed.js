@@ -20,6 +20,31 @@ const seedDatabase = async () => {
             ],
         });
 
+        // Create a user
+        await prisma.user.create({
+            data: {
+                name: 'Harshana',
+                email: 'harshana@gmail.com',
+                wallet: {
+                    create: {
+                        balance: 1000.0,
+                    },
+                },
+            },
+        });
+
+        await prisma.user.create({
+            data: {
+                name: 'Chanaka Rajapaksha',
+                email: 'rajapaksha@gmail.com',
+                wallet: {
+                    create: {
+                        balance: 500.0,
+                    },
+                },
+            },
+        });
+
         console.log('Database seeded successfully.');
     } catch (error) {
         console.error('Error seeding database:', error.message);
